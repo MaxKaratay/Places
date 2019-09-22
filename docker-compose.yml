@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  mysql-docker:
+    image: mysql:latest
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=places
+      - MYSQL_USER=camper
+      - MYSQL_PASSWORD=12345
+    volumes:
+      - /data/mysql
+  place-api-docker:
+    image: places-api
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    depends_on:
+      - mysql-docker
+    ports:
+      - 8080:8080
+    volumes:
+      - /data/place-api

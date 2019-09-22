@@ -1,0 +1,76 @@
+<style>
+    .list-group {
+        max-height: 200px;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group span,
+    .form-group label {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+</style>
+
+<div class="container" ng-controller="adminPageController">
+    <div class="row my-4">
+        <ul class="list-group col-4 mr-4">
+            <li ng-repeat="c in countries" class="list-group-item d-flex align-items-center">
+                <span class="mr-auto">{{c.name}}</span>
+                <span class="badge badge-primary badge-pill mr-1">{{c.code}}</span>
+                <a class="badge badge-danger badge-pill text-white" ng-click="deleteCountry(c.id)">×</a>
+            </li>
+        </ul>
+        <div class="form-group col-6">
+            <form ng-submit="postCountry()">
+                <label>Add new country</label>
+                <input name="name" class="form-control" placeholder="Print country name" ng-model="countryModel.name" required>
+                <span class="text-danger" ng-show="nameErr" >{{nameErr}}</span>
+                <input name="code" class="form-control" placeholder="Print country code" ng-model="countryModel.code" required>
+                <span class="text-danger" ng-show="codeErr">{{codeErr}}</span>
+                <input type="submit" value="Add" class="btn btn-dark my-2">
+            </form>
+        </div>
+    </div>
+
+    <div class="row my-4">
+        <ul class="list-group col-4 mr-4">
+            <li ng-repeat="c in cities" class="list-group-item d-flex align-items-center">
+                <span class="mr-auto">{{c.name}}</span>
+                <span class="badge badge-primary badge-pill mr-1">{{c.country.name}}</span>
+                <a class="badge badge-danger badge-pill text-white" ng-click="deleteCity(c.id)">×</a>
+            </li>
+        </ul>
+        <div class="form-group col-6">
+            <form ng-submit="postCity()">
+                <label>Country</label>
+                <select name="country" required class="form-control" ng-model="cityModel.countryId">
+                    <option ng-repeat="c in countries" value="{{c.id}}">{{c.name}}</option>
+                </select>
+                <label>Add new city</label>
+                <input name="city" class="form-control" placeholder="Print city name" ng-model="cityModel.name" required>
+                <p class="text-danger mb-3" ng-show="cityErr" >{{cityErr}}</p>
+                <input type="submit" value="Add" class="btn btn-dark my-2">
+            </form>
+        </div>
+    </div>
+
+    <div class="row my-4">
+        <ul class="list-group col-4 mr-4">
+            <li ng-repeat="t in types" class="list-group-item d-flex justify-content-between align-items-center">
+                <span>{{t.name}}</span>
+                <a class="badge badge-danger badge-pill text-white" ng-click="deleteType(t.id)">×</a>
+            </li>
+        </ul>
+        <div class="form-group col-6">
+            <form ng-submit="postType()">
+                <label>Add new type for places</label>
+                <input name="type" class="form-control" placeholder="Print type name" ng-model="typeModel.name" required>
+                <p class="text-danger mb-3" ng-show="typeErr">{{typeErr}}</p>
+                <input type="submit" value="Add" class="btn btn-dark my-2">
+            </form>
+        </div>
+    </div>
+</div>

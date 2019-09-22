@@ -1,0 +1,26 @@
+<link type="text/css" rel="stylesheet" href="css/login.css"/>
+<div class="login-container d-flex align-items-center justify-content-center" ng-controller="registrController">
+    <form class="text-center login-form" ng-submit="addPerson()">
+        <h1 class="mb-5 font-weight-light text-uppercase">Registration</h1>
+        <div class="form-group">
+            <input type="text" class="form-control rounded-pill form-control-normal" placeholder="your name" ng-model="name"/>
+        </div>
+        <div class="form-group">
+            <input type="password" class="form-control rounded-pill form-control-normal" placeholder="your password" ng-model="pass1"/>
+        </div>
+        <div class="form-group">
+            <input type="password" class="form-control rounded-pill form-control-normal" placeholder="repeat password" ng-model="pass2"/>
+        </div>
+        <div>
+            <button class="btn btn-primary btn-block rounded-pill btn-normal btn-custom" type="submit">Sign up</button>
+        </div>
+        <div ng-show="passError" class="text-danger">
+            {{passError}}
+        </div>
+        <div ng-show="regErrors">
+            <div ng-repeat="e in regErrors" class="alert alert-danger" role="alert">
+                <h4 class="alert-heading">{{ e }}</h4>
+            </div>
+        </div>
+    </form>
+</div>

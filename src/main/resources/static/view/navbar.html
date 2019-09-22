@@ -1,0 +1,25 @@
+<div ng-controller="navbarController">
+    <nav class="navbar navbar-light navbar-expand-lg shadow-sm bg-white">
+        <a href="#!home" class="navbar-brand">Home</a>
+        <button type="button" data-toggle="collapse" data-target="#links" aria-controls="links" aria-expanded="false"
+                aria-label="toggle nav" class="navbar-toggler">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div id="links" class="collapse navbar-collapse">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item" ng-show="personName"><a href="#!administrate" class="nav-link">Administrate</a></li>
+                <li class="nav-item" ng-show="personName"><a href="#!place" class="nav-link">Add place</a></li>
+                <li class="nav-item" ng-show="personName"><a href="#!review" class="nav-link">Add review</a></li>
+            </ul>
+            <div class="navbar-text ml-lg-3" ng-show="!personName">
+                <a href="#!login" class="btn btn-primary text-white shadow">Sign in</a>
+            </div>
+            <div class="badge badge-pill badge-primary mx-3" ng-show="personName">
+                {{personName}}
+            </div>
+            <div ng-show="personName">
+                <button class="btn btn-primary mx-3" type="button" ng-click="logOut()">Sign out</button>
+            </div>
+        </div>
+    </nav>
+</div>
