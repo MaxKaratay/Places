@@ -48,7 +48,6 @@ INSERT INTO places.place (id, name, city_id, type_id) VALUES (1, 'Multiplex', 14
 ,(12, 'Chateau dIf', 10, 11)
 ,(13, 'Caprica', 14, 16)
 ,(14, 'Mac Dac', 14, 9)
-,(15, 'tyuuiu', 1, 8)
 ,(17, 'Willy-park', 13, 7)
 ,(20, 'Nature museum', 6, 3)
 ,(22, 'Ugando-do-do', 25, 8)
@@ -65,8 +64,7 @@ INSERT INTO places.person (id, name, password) VALUES (1, 'Admin', '$2a$08$/2PpJ
 ,(2, 'Max', '$2a$08$3hosleZ6j64.UEcuPVa8E.2TQ.kcyn8PU3n/tyfcRXcOlpvAAwR26')
 ,(3, 'Dasha', '$2a$08$AA3aPDYFu90a9//0UCyqxupmBpI7mbNz998BGG7QI6x5dCismSjgy')
 ,(4, 'Vasya', '$2a$08$a9flrxP8HAXGwgSQYshMhu7nbHSP7K354VJguG8X1TmNGtsxJ.fE.')
-,(5, 'Ugando', '$2a$08$7Wfg/q7yJQa18mPS6HUkqumf46bxTJcl5QRuDFzGW31BtOwRYrfrS')
-,(7, 'Kek', '$2a$08$RhmJsGkbqdzpYpKo.ytsO.NtUyWPm0vSXweBjPipGWlbZOOUGaxTG');
+,(5, 'Ugando', '$2a$08$7Wfg/q7yJQa18mPS6HUkqumf46bxTJcl5QRuDFzGW31BtOwRYrfrS');
 
 INSERT INTO places.person_role (person_id, roles) VALUES (2, 'USER')
 , (1, 'ADMIN')
@@ -78,7 +76,7 @@ INSERT INTO places.review (id, comment, rating, person_id, place_id) VALUES (1, 
 , (2, 'The best place i`ve ever been !', 9, 1, 4)
 , (3, 'Bad seats :(', 4, 1, 1)
 , (4, 'Cool atmosphere )) ', 6, 1, 3)
-, (5, 'Interesting place where you can find awesome people and talk about everything  that you want !!! But, beer kinda bullshit.... ', 5, 1, 5)
+, (5, 'Interesting place where you can find awesome people and talk about everything  that you want !!! But, beer was bad.... ', 5, 1, 5)
 , (6, 'Atmospheric place and bell sounds really strong', 8, 2, 6)
 , (8, 'Interesting place that belongs to the UNESCO World Heritage Sites. ', 7, 3, 8)
 , (9, 'Perfect actors and atmosphere !!!!!!!!!!!', 9, 3, 9)
@@ -88,16 +86,10 @@ INSERT INTO places.review (id, comment, rating, person_id, place_id) VALUES (1, 
 Next time I better go to the gym . ', 2, 4, 13)
 , (13, 'At this place make the ugliest coffee I''ve ever tasted.', 2, 1, 14)
 , (14, 'I love to buy delicious MacFlure here, in hot summer evening after my work  ))', 8, 3, 14)
-, (15, 'yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy place is bullshit', 6, 1, 15)
 , (16, 'Fun place!', 7, 1, 17)
-, (17, 'rrrrrrrrrrrrrrrrrrrrrrrrrrrrrr', 4, 1, 7)
 , (18, 'Cool coffee and tea )', 7, 1, 7)
 , (19, 'Perfect pub... uhh...', 9, 2, 22)
 , (20, 'I felt scary when i been here last time, this is really old hotel.', 3, 1, 23)
-, (22, 'Coolest place i`ve ever been in Ugando!!', 8, 1, 22)
-, (23, 'Ldlldldldldl', 2, 1, 24)
 , (24, 'The best park at the world !!!!!!!!!!', 10, 1, 17)
-, (25, 'Tuuuuuuuuu', 3, 1, 15)
 , (28, 'Perfect cafe with unforgettable atmosphere !', 10, 3, 26)
-, (29, 'It was terrible ((', 5, 7, 24)
-, (30, 'EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE', 2, 1, 7);
+, (29, 'It was terrible ((', 5, 7, 24);
