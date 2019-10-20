@@ -1,7 +1,7 @@
-<div class="container align-content-center" ng-controller="reviewPageController">
-    <form ng-submit="addReview()">
-        <div class="row ">
-            <div class="form-group col-lg-3 col-sm-6m">
+<div class="container h-100" ng-controller="reviewPageController">
+    <div class="row align-items-center h-100">
+        <form class="mx-auto" ng-submit="addReview()">
+            <div class="form-group">
                 <label>Places</label>
                 <select name="placeSelect" class="form-control" ng-model="model.placeId" required>
                     <optgroup ng-repeat="city in cities" label="{{city.name}}">
@@ -9,24 +9,25 @@
                     </optgroup>
                 </select>
             </div>
-        </div>
-        <div class="row">
-            <div class="form-group col-sm-6 col-lg-3">
+
+            <div class="form-group ">
                 <label>Set rating for this place</label>
-                <input name="rating" type="number" class="form-control" min="1" max="10" ng-model="model.rating" required>
+                <input name="rating" type="number" class="form-control" min="1" max="10" ng-model="model.rating"
+                       required>
             </div>
-        </div>
-        <div class="row">
-            <div class="form-group col-sm-6 col-lg-5">
+
+            <div class="form-group ">
                 <label for="textArea">Let us know what do you think about it</label>
-                <textarea id="textArea" name="comment" class="form-control" ng-model="model.comment" required></textarea>
+                <textarea id="textArea" name="comment" class="form-control" ng-model="model.comment"
+                          required></textarea>
                 <input type="submit" value="Post it" class="btn btn-primary my-2">
             </div>
-        </div>
-    </form>
-    <div ng-show="postErrors">
-        <div ng-repeat="e in postErrors" class="alert alert-danger" role="alert">
-            <h4 class="alert-heading">{{ e }}</h4>
+
+        </form>
+        <div ng-show="postErrors">
+            <div ng-repeat="e in postErrors" class="alert alert-danger" role="alert">
+                <h4 class="alert-heading">{{ e }}</h4>
+            </div>
         </div>
     </div>
 </div>

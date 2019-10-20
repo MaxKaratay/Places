@@ -1,5 +1,5 @@
 <div ng-controller="navbarController">
-    <nav class="navbar navbar-light navbar-expand-lg shadow-sm bg-white">
+    <nav class="navbar navbar-light navbar-expand-lg shadow-sm bg-navbar">
         <a href="#!home" class="navbar-brand">Home</a>
         <button type="button" data-toggle="collapse" data-target="#links" aria-controls="links" aria-expanded="false"
                 aria-label="toggle nav" class="navbar-toggler">
@@ -7,7 +7,7 @@
         </button>
         <div id="links" class="collapse navbar-collapse">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item" ng-show="personName"><a href="#!administrate" class="nav-link">Administrate</a></li>
+                <li class="nav-item" ng-show="personName"><a href="#!administrate" class="nav-link" ng-show="personName === 'admin'">Administrate</a></li>
                 <li class="nav-item" ng-show="personName"><a href="#!place" class="nav-link">Add place</a></li>
                 <li class="nav-item" ng-show="personName"><a href="#!review" class="nav-link">Add review</a></li>
             </ul>

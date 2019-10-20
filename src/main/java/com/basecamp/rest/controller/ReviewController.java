@@ -64,11 +64,17 @@ public class ReviewController {
 
     @JsonView(Views.Public.class)
     @GetMapping("/pages/{number}")
-    public ResponseEntity<Page<Review>> getPageContent(@PathVariable int number, @RequestParam(required = false) String filter) {
+    public ResponseEntity<Page<Review>> getPageContent(@PathVariable int number,
+                                                       @RequestParam(required = false) String filter,
+                                                       @RequestParam(required = false) String cityName) {
         if (filter != null) {
             filter = filter.trim();
         }
+        if (cityName != null) {
+            cityName = cityName.trim();
+        }
         PageRequest pageRequest = new PageRequest(number - 1, 4);
-        return new ResponseEntity<>(reviewService.getAllForPage(pageRequest, filter), HttpStatus.OK);
+        return new ResponseEntity<>(reviewService.getAllForPage(pageRequest, filter, cityName), HttpStatus.OK);
     }
+
 }

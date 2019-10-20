@@ -31,7 +31,7 @@ function getPage($http, $scope) {
         $http({
             url: '/reviews/pages/' + page,
             method: "GET",
-            params: {filter: $scope.searchFilter}
+            params: {filter: $scope.searchFilter, cityName: $scope.searchCityName}
         }).then(function (response) {
             $scope.reviews = response.data.content;
             $scope.lastPage = response.data.totalPages;
@@ -46,8 +46,19 @@ app.controller("reviewController", function ($scope, $http) {
     $scope.reviews = [];
     $scope.curPage = 1;
     $scope.searchFilter = "";
+    $scope.searchCityName = "";
     $scope.goToPage = getPage($http, $scope);
     $scope.goToPage($scope.curPage);
+
+    // for style purpose
+    $scope.getStyle = function (n) {
+        let styles = ['mega', 'hours', 'lime', 'orange', 'sky', 'atlas'];
+        return styles[n];
+    };
+    $scope.getRandom = function(){
+        return Math.floor((Math.random()*6));
+    };
+
 });
 
 
@@ -340,4 +351,11 @@ function getLogOut($scope, $window) {
         $window.localStorage.setItem('personName', '');
         $window.location.reload();
     };
+}
+
+function getCardStyle() {
+    let styles = ['mega', 'hours', 'lime', 'orange', 'sky', 'atlas'];
+    let n = Math.floor(Math.random() * 6);
+    console.log(styles[n]);
+    return styles[n];
 }

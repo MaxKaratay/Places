@@ -1,21 +1,26 @@
-<div class="container">
+<div class="container h-100">
     <div class="row d-flex justify-content-center align-items-center">
         <form class="form-group form-inline mt-4" ng-submit="goToPage(1)">
-            <input class="form-control rounded shadow" type="text" placeholder="Enter symbols" ng-model="searchFilter">
+            <input class="form-control rounded shadow" type="text" placeholder="Enter symbols"
+                   ng-model="searchFilter">
+            <input class="form-control rounded shadow ml-2" type="text" placeholder="Enter city"
+                   ng-model="searchCityName">
             <button type="submit" class="btn btn-primary rounded-pill border-primary shadow text-white mx-2">Find</button>
         </form>
     </div>
 
-
-
     <div class="row">
         <div ng-repeat="r in reviews" class="col-lg-3 col-sm-6 my-4">
-            <div class="card text-white bg-info">
+            <div ng-init="i = getRandom()" class="card text-white bg-info" ng-class="getStyle(i)">
                 <h4 class="card-header">{{r.place.name}}</h4>
                 <div class="card-body">
                     <h5 class="card-subtitle mt-2">{{r.place.type.name}}</h5>
                     <h6 class="card-subtitle my-2">{{r.place.city.name}}</h6>
-                    <p class="card-text mb-2">{{r.rating}}</p>
+                    <ul class="star-rating">
+                        <li ng-repeat="i in [] | range:1:r.rating" class="star">
+                            &#9733; <!-- Star symbol code -->
+                        </li>
+                    </ul>
                     <p class="card-text mb-2">{{r.comment}}</p>
                     <h6 class="card-subtitle">{{r.person.name}}</h6>
                 </div>
@@ -23,7 +28,7 @@
         </div>
     </div>
 
-    <div class="row d-flex justify-content-center align-items-center" ng-show="!count(reviews)">
+    <div class="row d-flex justify-content-center align-items-center" ng-show="reviews.length > 0">
         <nav>
             <ul class="pagination">
                 <li class="page-item" ng-class="curPage == 1 ? 'disabled' : ''">
@@ -33,7 +38,8 @@
                     </a>
                 </li>
                 <!--  -->
-                <li class="page-item" ng-repeat="i in [] | range:1:lastPage" ng-class="i == curPage ? 'active' : ''">
+                <li class="page-item" ng-repeat="i in [] | range:1:lastPage"
+                    ng-class="i == curPage ? 'active' : ''">
                     <a class="page-link" ng-click="goToPage(i)">{{i}}</a>
                 </li>
                 <!--  -->
@@ -47,8 +53,7 @@
         </nav>
     </div>
 
-    <div class="row d-flex justify-content-center align-content-center" ng-show="count(reviews)">
-        <h1 class="text-info">Nothing to show ;(</h1>
+    <div class="row d-flex justify-content-center align-content-center" ng-show="reviews.length === 0">
+        <h1 class="text-danger">Nothing to show ;(</h1>
     </div>
-
 </div>

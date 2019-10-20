@@ -29,11 +29,19 @@ public class ReviewService {
         return reviewRepository.findAll();
     }
 
-    public Page<Review> getAllForPage(Pageable pageable, String filter) {
-        if (StringUtils.isEmpty(filter)) {
+    public Page<Review> getAllForPage(Pageable pageable, String filter, String cityName) {
+        boolean emptyFilter = StringUtils.isEmpty(filter);
+        boolean emptyCityName = StringUtils.isEmpty(cityName);
+        if (emptyFilter && emptyCityName) {
             return getAllByPageable(pageable);
         }
-        Specification<Review> specification = getSpecificationByFilter(filter);
+        Specification<Review> specification = Specifications.where(null);
+        if (!emptyFilter) {
+            specification = Specifications.where(specification).and(getSpecificationByFilter(filter));
+        }
+        if (!emptyCityName) {
+            specification = Specifications.where(specification).and(getPlaceFieldNameSpecification(cityName, "city"));
+        }
         return getAllBySpecificationAndPageable(specification, pageable);
     }
 

@@ -7,10 +7,10 @@
           href="/webjars/bootstrap/css/bootstrap.min.css"/>
     <link type="text/css" rel="stylesheet" href=css/common.css>
 </head>
-<body>
+<body class="container-fluid d-flex flex-column">
 <div ng-include="'view/navbar.html'"></div>
 
-<div ng-view=""></div>
+<div id="main-view" ng-view="" class="flex-grow-1"></div>
 
 <script src="/webjars/jquery/jquery.min.js"></script>
 <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
